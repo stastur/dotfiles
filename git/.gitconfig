@@ -1,0 +1,21 @@
+[core]
+excludesfile = ~/.gitignore_global
+
+[user]
+name = Stanislau Tur
+
+[include]
+path = personal.gitconfig
+
+[includeIf "gitdir:~/workspace/"]
+path = workspace.gitconfig
+
+[push]
+autoSetupRemote = true
+followTage = true
+
+[rerere]
+enabled = true
+
+[sequence]
+editor = code --wait

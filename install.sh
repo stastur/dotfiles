@@ -9,8 +9,20 @@ fi
 if test ! $(which brew); then
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
-  echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> $HOME/.zprofile
+  echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >>$HOME/.zprofile
   eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
-brew install neovim fzf nvm
+brew install stow neovim fzf nvm ripgrep
+
+mkdir $HOME/workspace
+mkdir $HOME/personal-projects
+
+# TODO: do backup instead of removing
+for file in $(find */ -type f | sed "s|^.*//||"); do
+  if [ -e "$HOME/$file" ]; then
+    rm "$HOME/$file"
+  fi
+done
+
+stow --target=$HOME */
