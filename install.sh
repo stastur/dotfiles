@@ -12,7 +12,7 @@ if test ! $(which brew); then
   eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
-brew install stow neovim fzf nvm ripgrep
+brew install stow neovim fzf nvm ripgrep tmux
 
 mkdir $HOME/workspace
 mkdir $HOME/personal-projects
@@ -20,6 +20,7 @@ mkdir $HOME/personal-projects
 # TODO: do backup instead of removing
 for file in $(find */ -type f | sed "s|^.*//||"); do
   if [ -e "$HOME/$file" ]; then
+    echo "Removing $file..."
     rm "$HOME/$file"
   fi
 done
