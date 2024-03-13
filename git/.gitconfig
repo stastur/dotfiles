@@ -12,7 +12,7 @@ path = workspace.gitconfig
 
 [push]
 autoSetupRemote = true
-followTage = true
+followTags = true
 
 [rerere]
 enabled = true
