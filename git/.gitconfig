@@ -16,6 +16,3 @@ followTags = true
 
 [rerere]
 enabled = true
-
-[sequence]
-editor = code --wait

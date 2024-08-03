@@ -10,7 +10,7 @@ bindkey -s ^f "source ~/fzf.sh\n"
 export PATH=$HOME/bin:/usr/local/bin:$(go env GOPATH)/bin:$PATH
 
 # pnpm
-export PNPM_HOME="/Users/stan/Library/pnpm"
+export PNPM_HOME="$HOME/Library/pnpm"
 case ":$PATH:" in
   *":$PNPM_HOME:"*) ;;
   *) export PATH="$PNPM_HOME:$PATH" ;;
