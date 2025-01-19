@@ -12,12 +12,8 @@ if test ! $(which brew); then
   eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
-# Installing JetBrainsMono nerd font
-curl -OL https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/JetBrainsMono.zip \
-  && unzip ./JetBrainsMono.zip -d ~/Library/Fonts \
-  && rm ./JetBrainsMono.zip
-
 brew install stow neovim fzf nvm ripgrep tmux
+brew install --cask wezterm
 
 mkdir $HOME/workspace
 mkdir $HOME/personal-projects
