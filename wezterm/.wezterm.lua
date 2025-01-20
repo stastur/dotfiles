@@ -3,6 +3,10 @@ local wezterm = require 'wezterm'
 local config = wezterm.config_builder()
 
 config.color_scheme = 'rose-pine-moon'
+config.colors = {
+  selection_bg = 'rgba: 86 82 110 50%',
+  selection_fg = 'none',
+}
 
 config.font = wezterm.font('JetBrains Mono', { weight = 'DemiBold' })
 config.font_size = 22
