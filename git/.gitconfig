@@ -1,18 +1,32 @@
 [core]
-excludesfile = ~/.gitignore_global
+  excludesfile = ~/.gitignore_global
 
 [user]
-name = Stanislau Tur
+  name = Stanislau Tur
 
 [include]
-path = personal.gitconfig
+  path = personal.gitconfig
 
 [includeIf "gitdir:~/workspace/"]
-path = workspace.gitconfig
+  path = workspace.gitconfig
 
 [push]
-autoSetupRemote = true
-followTags = true
+  autoSetupRemote = true
+  followTags = true
 
 [rerere]
-enabled = true
+  enabled = true
+
+[alias]
+  c = commit -m
+  ca = commit -am
+  a = commit --amend -m
+  an = commit --amend --no-edit
+  co = checkout
+  cob = checkout -b
+  pushf = push --force
+  rb = rebase
+  rbi = "!f() { git rebase -i HEAD~$1; }; f"
+  rbm = "!f() { git fetch; git rb $(git rev-parse --abbrev-ref origin/HEAD); }; f"
+  rbmi = "!f() { git fetch; git rb -i $(git rev-parse --abbrev-ref origin/HEAD); }; f"
+
