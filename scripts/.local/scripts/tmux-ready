@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+if [ -f $2/.tmux-ready ]; then
+  tmux send-keys -t $1 "source $2/.tmux-ready" c-M
+elif [ -f $HOME/.tmux-ready ]; then
+  tmux send-keys -t $1 "source $HOME/.tmux-ready" c-M
+fi
+clear

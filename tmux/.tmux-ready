@@ -1,0 +1,4 @@
+tmux new-window -d
+
+nvim .
+
