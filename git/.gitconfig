@@ -21,12 +21,12 @@
   c = commit -m
   ca = commit -am
   a = commit --amend -m
-  an = commit --amend --no-edit
+  an = "!f() { git add . ; git commit --amend --no-edit; }; f"
   co = checkout
   cob = checkout -b
   pushf = push --force
   rb = rebase
-  rbi = "!f() { git rebase -i HEAD~$1; }; f"
+  rbn = "!f() { git rebase -i HEAD~$1; }; f"
   rbm = "!f() { git fetch; git rb $(git rev-parse --abbrev-ref origin/HEAD); }; f"
   rbmi = "!f() { git fetch; git rb -i $(git rev-parse --abbrev-ref origin/HEAD); }; f"
 
