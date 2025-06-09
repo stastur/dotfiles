@@ -1,5 +1,7 @@
 export ZSH="$HOME/.oh-my-zsh"
 
+alias vim="nvim"
+
 ZSH_THEME="robbyrussell"
 plugins=(git)
 
@@ -15,11 +17,10 @@ appendPath() {
 
 prependPath() {
   if [[ "$PATH" != *"$1"* ]]; then
-    export PATH="$1:$PATH" 
+    export PATH="$1:$PATH"
   fi
 }
 
-prependPath $(go env GOPATH)/bin
 prependPath /usr/local/bin
 prependPath $HOME/bin
 prependPath $HOME/Library/pnpm

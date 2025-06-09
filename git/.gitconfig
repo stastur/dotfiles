@@ -26,6 +26,7 @@
   cob = checkout -b
   pushf = push --force
   rb = rebase
+  rsn = "!f() { git reset HEAD~$1; }; f"
   rbn = "!f() { git rebase -i HEAD~$1; }; f"
   rbm = "!f() { git fetch; git rb $(git rev-parse --abbrev-ref origin/HEAD); }; f"
   rbmi = "!f() { git fetch; git rb -i $(git rev-parse --abbrev-ref origin/HEAD); }; f"
