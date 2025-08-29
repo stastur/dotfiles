@@ -37,6 +37,7 @@ return {
         end
 
         local builtin = require('telescope.builtin')
+        nmap('gi', builtin.lsp_implementations, '[G]oto [I]mplementation')
         nmap('gd', builtin.lsp_definitions, '[G]oto [D]efinition')
         nmap('gr', builtin.lsp_references, '[G]oto [R]eferences')
 
