@@ -14,6 +14,7 @@ fi
 
 brew install stow neovim fzf nvm ripgrep tmux
 brew install --cask wezterm
+brew install --cask nikitabobko/tap/aerospace
 
 mkdir $HOME/workspace
 mkdir $HOME/personal-projects
