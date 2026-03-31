@@ -19,6 +19,8 @@ config.window_padding = {
   bottom = 0,
 }
 
+config.window_close_confirmation = 'NeverPrompt'
+
 local act = wezterm.action
 
 config.keys = {
