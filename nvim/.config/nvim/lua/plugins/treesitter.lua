@@ -3,34 +3,47 @@ return {
   dependencies = {
     'nvim-treesitter/nvim-treesitter-textobjects',
   },
+  lazy = false,
+  branch = 'main',
   build = ':TSUpdate',
   config = function()
-    require('nvim-treesitter.configs').setup {
-      -- Add languages to be installed here that you want installed for treesitter
-      modules = {},
-      ensure_installed = { 'c', 'cpp', 'go', 'lua', 'rust', 'tsx', 'javascript', 'typescript', 'vimdoc', 'vim', 'bash' },
+    vim.api.nvim_create_autocmd('FileType', {
+      pattern = '*',
+      callback = function()
+        pcall(vim.treesitter.start)
+      end,
+    })
 
-      -- Autoinstall languages that are not installed. Defaults to false (but you can change for yourself!)
-      auto_install = false,
-      sync_install = false,
-      ignore_install = {},
-
-      highlight = { enable = true },
-      indent = { enable = true },
-      textobjects = {
-        select = {
-          enable = true,
-          lookahead = true,
-          keymaps = {
-            ['aa'] = '@parameter.outer',
-            ['ia'] = '@parameter.inner',
-            ['af'] = '@function.outer',
-            ['if'] = '@function.inner',
-            ['ac'] = '@class.outer',
-            ['ic'] = '@class.inner',
-          },
-        },
+    require('nvim-treesitter-textobjects').setup {
+      select = {
+        lookahead = true,
       },
     }
+
+    local select = require("nvim-treesitter-textobjects.select")
+
+    vim.keymap.set({ "x", "o" }, "aa", function()
+      select.select_textobject("@parameter.outer", "textobjects")
+    end)
+
+    vim.keymap.set({ "x", "o" }, "ia", function()
+      select.select_textobject("@parameter.inner", "textobjects")
+    end)
+
+    vim.keymap.set({ "x", "o" }, "af", function()
+      select.select_textobject("@function.outer", "textobjects")
+    end)
+
+    vim.keymap.set({ "x", "o" }, "if", function()
+      select.select_textobject("@function.inner", "textobjects")
+    end)
+
+    vim.keymap.set({ "x", "o" }, "ac", function()
+      select.select_textobject("@class.outer", "textobjects")
+    end)
+
+    vim.keymap.set({ "x", "o" }, "ic", function()
+      select.select_textobject("@class.inner", "textobjects")
+    end)
   end
 }
