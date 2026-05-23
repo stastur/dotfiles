@@ -5,7 +5,6 @@ return {
       'mason-org/mason.nvim',
       'mason-org/mason-lspconfig.nvim',
       { 'j-hui/fidget.nvim', opts = {} },
-      { 'folke/neodev.nvim', opts = {} },
     },
 
     config = function()
@@ -28,18 +27,13 @@ return {
 
           nmap('<leader>f', vim.lsp.buf.format, '[F]ormat')
           nmap('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
-          nmap('<leader>ca', function()
-            vim.lsp.buf.code_action {
-              context = {
-                only = { 'quickfix', 'refactor', 'source' },
-              }
-            }
-          end, '[C]ode [A]ction')
+          nmap('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
           nmap('K', vim.lsp.buf.hover, 'Hover Documentation')
           nmap('H', vim.lsp.buf.signature_help, 'Signature Documentation')
 
-          nmap('[d', vim.diagnostic.goto_prev, 'Go to previous diagnostic message')
-          nmap(']d', vim.diagnostic.goto_next, 'Go to next diagnostic message')
+          nmap('[d', function() vim.diagnostic.jump({ count = -1, float = false }) end,
+            'Go to previous diagnostic message')
+          nmap(']d', function() vim.diagnostic.jump({ count = 1, float = false }) end, 'Go to next diagnostic message')
           nmap('<leader>dm', vim.diagnostic.open_float, 'Open floating diagnostic message')
           nmap('<leader>dl', vim.diagnostic.setloclist, 'Open diagnostics list')
         end,
