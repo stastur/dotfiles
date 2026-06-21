@@ -42,6 +42,8 @@ return {
       local servers = {
         ts_ls = {},
 
+        tsgo = {},
+
         lua_ls = {
           settings = {
             Lua = {
@@ -61,7 +63,14 @@ return {
       }
 
       require('mason').setup()
-      require('mason-lspconfig').setup({ ensure_installed = vim.tbl_keys(servers) })
+      require('mason-lspconfig').setup({
+        ensure_installed = vim.tbl_keys(servers),
+        automatic_enable = {
+          exclude = {
+            "ts_ls"
+          }
+        }
+      })
 
       for name, config in pairs(servers) do
         vim.lsp.config(name, config)
